@@ -2,10 +2,12 @@
 
 namespace App\Entity;
 
-use App\Repository\PlayerRepository;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Serializer\Annotation\Groups;
+
 
 #[ORM\Entity(repositoryClass: PlayerRepository::class)]
+
 class Player
 {
     #[ORM\Id]
@@ -13,7 +15,10 @@ class Player
     #[ORM\Column]
     private ?int $id = null;
 
+    
+
     #[ORM\Column(length: 255)]
+    #[Groups(['list_players'])]
     private ?string $name = null;
 
     #[ORM\Column]
