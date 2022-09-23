@@ -45,6 +45,10 @@ class Player
     #[Groups(['list_players'])]
     private ?int $valeurRevente = null;
 
+    #[ORM\ManyToOne(inversedBy: 'players')]
+    #[Groups(['list_players'])]
+    private ?Team $team = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -142,6 +146,18 @@ class Player
     public function setValeurRevente(int $valeurRevente): self
     {
         $this->valeurRevente = $valeurRevente;
+
+        return $this;
+    }
+
+    public function getTeam(): ?Team
+    {
+        return $this->team;
+    }
+
+    public function setTeam(?Team $team): self
+    {
+        $this->team = $team;
 
         return $this;
     }

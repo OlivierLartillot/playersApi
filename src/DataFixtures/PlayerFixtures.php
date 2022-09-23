@@ -3,6 +3,7 @@
 namespace App\DataFixtures;
 
 use App\Entity\Player;
+use App\Repository\TeamRepository;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Faker\Factory;
 use Doctrine\Persistence\ObjectManager;
@@ -13,12 +14,13 @@ use Doctrine\Persistence\ObjectManager;
 */
 class PlayerFixtures extends Fixture
 {
+
+
     public function load(ObjectManager $manager): void
     {
-       
+
         for ($i=0; $i<20; $i++) {
             //https://fakerphp.github.io/#create-fake-data
-
             switch ($i) {
                 case $i<5:
                     $country = "us_US";
@@ -37,7 +39,7 @@ class PlayerFixtures extends Fixture
             $de_pourc_max_dom = mt_rand(25,75);
             $valeur = mt_rand(5000,6000);
             $case_Max=mt_rand(0,1);
-
+  
             /** Hydratation de l'objet */
             $player = new Player();
             $player->setFirstName($generator->firstNameMale());
@@ -50,6 +52,10 @@ class PlayerFixtures extends Fixture
             $player->setValeurRevente($valeur);
             $manager->persist($player);
         }
+
+
+
+
         $manager->flush();
     }
 }
