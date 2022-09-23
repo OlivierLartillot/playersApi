@@ -14,11 +14,11 @@ class ApiController extends AbstractController
     public function index(PlayerRepository $playerRepo): JsonResponse
     {
 
-        return $this->json([
+        return $this->json(
             $playerRepo->findAll(),
             200,
             [],
             ['groups' => 'list_players']
-        ]);
+        );
     }
 }

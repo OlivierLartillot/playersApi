@@ -22,6 +22,7 @@ class Player
     private ?string $name = null;
 
     #[ORM\Column]
+    #[Groups(['list_players'])]
     private ?int $age = null;
 
     public function getId(): ?int
