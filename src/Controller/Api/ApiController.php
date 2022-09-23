@@ -7,11 +7,12 @@ use App\Repository\PlayerRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 use Symfony\Component\HttpFoundation\JsonResponse;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 
 class ApiController extends AbstractController
 {
-    #[Route('/players', name: 'app_api')]
+    #[Route('/players', name: 'api_players_list')]
     public function players_list(PlayerRepository $playerRepo): JsonResponse
     {
 
@@ -24,9 +25,9 @@ class ApiController extends AbstractController
     }
 
     #[Route('/players/{id}', name: 'app_api')]
-    public function find_by_name(Player $player): JsonResponse
+    public function find_by_name(Player $player, Request $request): JsonResponse
     {
- 
+
         return $this->json(
             $player,
             200,

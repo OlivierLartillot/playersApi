@@ -21,6 +21,7 @@ class Player
     private ?string $firstname = null;
 
     #[ORM\Column(length: 255)]
+    #[Groups(['list_players'])]
     private ?string $lastname = null;
 
     #[ORM\Column]
@@ -37,9 +38,11 @@ class Player
     private ?int $caseDomMax = null;
 
     #[ORM\Column]
+    #[Groups(['list_players'])]
     private ?int $valeur = null;
 
     #[ORM\Column]
+    #[Groups(['list_players'])]
     private ?int $valeurRevente = null;
 
     public function getId(): ?int
